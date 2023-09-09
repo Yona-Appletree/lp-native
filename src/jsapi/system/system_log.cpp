@@ -4,7 +4,7 @@
 
 #include <Arduino.h>
 
-void portable_system_log(
+void lp_sys_log(
     const char* message
 ) {
     Serial.print(message);

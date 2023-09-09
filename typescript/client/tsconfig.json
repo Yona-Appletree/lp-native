@@ -13,6 +13,6 @@
   "outFile": "../../data/js/client.js",
   "include": [
     "**/*",
-    "../../src/portable/pure/**/*.d.ts"
+    "../../src/jsapi/pure/**/*.d.ts"
   ]
 }

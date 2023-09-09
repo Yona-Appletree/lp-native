@@ -1,7 +1,10 @@
 #include <math.h>
 
-double portable_pure_cos(
+extern "C" {
+__attribute__((unused))
+double lp_cos(
     double t
 ) {
     return cos(t);
+}
 }
