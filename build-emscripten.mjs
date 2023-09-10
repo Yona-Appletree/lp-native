@@ -6,7 +6,7 @@ import * as path from 'path';
 
 const EXPORT_NAME = 'lp_pure';
 const BUILD_DIR = 'data/js';
-const PUBLIC_API_HEADER = 'src/jsapi/pure/pure.h';
+const PUBLIC_API_HEADER = 'src/modules/pure/pure.h';
 const PUBLIC_API_DIR = path.dirname(PUBLIC_API_HEADER);
 
 if (!fs.existsSync(PUBLIC_API_HEADER)) {
@@ -77,7 +77,7 @@ PUBLIC_API_NAME=lp
 
 BUILD_DIR="data/js"
 
-PUBLIC_API_HEADER="src/jsapi/pure/pure.h"
+PUBLIC_API_HEADER="src/modules/pure/pure.h"
 PUBLIC_API_DIR=$(dirname "$PUBLIC_API_HEADER")
 
 if [ ! -f "$PUBLIC_API_HEADER" ]; then
@@ -108,7 +108,7 @@ em++ -O3  --closure 1  -s WASM=1 \
          -o "$BUILD_DIR/$EXPORT_NAME.js" \
          -s "SINGLE_FILE" \
          -x c++ \
-         $(find src/jsapi/pure -iname '*.c' -or -iname '*.cc' -or -iname '*.cpp' | grep -v main.cc) \
+         $(find src/modules/pure -iname '*.c' -or -iname '*.cc' -or -iname '*.cpp' | grep -v main.cc) \
          || exit 1
     # -s "FILESYSTEM=0"
 

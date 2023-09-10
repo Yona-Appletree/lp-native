@@ -1,0 +1,6 @@
+{
+  "extends": "@tsconfig/node-lts/tsconfig.json",
+  "compilerOptions": {},
+  "include": ["src/**/*.cli.ts"],
+  "exclude": ["node_modules"]
+}
