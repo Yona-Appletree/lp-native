@@ -1,4 +1,4 @@
-import {ModuleDefinition} from "../ModuleDefinition";
+import {ModuleDefinition} from "../../module-tool/ModuleDefinition";
 
 export default {
     name: "gpio-pin",
@@ -21,7 +21,18 @@ export default {
             ]
         }
     ],
-    interopFunctions: [],
+    interopFunctions: [
+        {
+            name: "interopMagic",
+            returnType: "int32",
+            parameters: [
+                {
+                    name: "value",
+                    type: "int32",
+                }
+            ]
+        },
+    ],
     nativeFunctions: [
         {
             name: "initGpioPin",

@@ -36,3 +36,12 @@ export function cppTypeForPrimitiveType(type: PrimitiveTypeSlug): string {
         case "boolean": return "bool";
     }
 }
+
+export function tsTypeForPrimitiveType(type: PrimitiveTypeSlug): string {
+    switch (type) {
+        case "int32": return "number";
+        case "float64": return "number";
+        case "string": return "string";
+        case "boolean": return "boolean";
+    }
+}
