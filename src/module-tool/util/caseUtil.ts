@@ -1,6 +1,6 @@
 export function titleCase(input: string) {
     return input
-        .split(/[-_]+/)
+        .split(/\W+/)
         .map(word => word[0].toUpperCase() + word.slice(1))
         .join("");
 }
@@ -12,14 +12,14 @@ export function camelCase(input: string) {
 
 export function snakeCase(input: string) {
     return input
-        .split(/[-_]+/)
+        .split(/\W+/)
         .map(word => word.toLowerCase())
         .join("_");
 }
 
 export function kebabCase(input: string) {
     return input
-        .split(/[-_]+/)
+        .split(/\W+/)
         .map(word => word.toLowerCase())
         .join("-");
 }

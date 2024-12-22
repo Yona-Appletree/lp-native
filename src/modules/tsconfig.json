@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ES2015",
+    "strict": true,
+    "noImplicitAny": true,
+    "lib": [
+      "ES2015",
+      "DOM"
+    ],
+  },
+  // output to data/client.js
+  "outFile": "../../data/js/client.js",
+  "include": [
+    "**/*",
+    "../../src/modules/pure/**/*.d.ts"
+  ]
+}

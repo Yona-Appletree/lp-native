@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES5",             // Target ES5 for maximum compatibility with Duktape.
+    "module": "none",            // Duktape doesn't support modules out of the box.
+    "strict": true,              // Enables strict type checking.
+    "noImplicitAny": true,       // Raise error on expressions and declarations with an implied 'any' type.
+    "removeComments": true,      // Remove comments to reduce the output size.
+    "preserveConstEnums": true,  // Do not erase const enum declarations in generated code.
+    "outDir": "./out/duktape",           // The location to output the compiled JavaScript files.
+    "esModuleInterop": true,     // Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports.
+    "downlevelIteration": true   // Provide full support for iterables in 'for-of', spread, and destructuring when targeting 'ES5' or 'ES3'.
+  },
+  "include": [
+    "./src/**/*.server.ts"   // Your TypeScript source files location.
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

@@ -11,6 +11,7 @@ import {
 import {Platforms} from "./PlatformDefinition";
 import {trimMargin} from "./util/trimMargin";
 import {titleCase} from "./util/caseUtil";
+import {renameFilePrefixesInDirRecursively} from "./util/rename-file-prefixes-in-dir-recursively";
 
 async function main() {
     const modulesDir = path.normalize(path.join(path.dirname(process.argv[1]), "../modules"));
@@ -103,15 +104,13 @@ async function updateModule(
         baseFilename: string,
         functions: NativeFunctionDefinition[],
     ) {
-        const typeName = baseFilename
-            .split(/[^a-z0-9]+/i)
-            .map(word => word[0].toUpperCase() + word.slice(1))
-            .join("");
+        const interfaceName = titleCase(moduleName) + titleCase(baseFilename);
+        const implName = interfaceName + "Impl";
 
         ensureFile({
             filename: `${baseFilename}.declaration.ts`,
             contents: trimMargin(
-                `export interface ${typeName} {` +
+                `export interface ${interfaceName} {` +
                 functions.map(def => `    ${def.name}: (` + def.parameters.map(param => `${param.name}: ${tsTypeForPrimitiveType(param.type)}`).join(", ") + `) => ${tsTypeForPrimitiveType(def.returnType)}\n`).join("\n") +
                 `}`
             ),
@@ -122,10 +121,10 @@ async function updateModule(
         ensureFile({
             filename: `${baseFilename}.ts`,
             contents:
-                `import {${typeName}} from "./${baseFilename}.declaration";` +
-                `export default {` +
-                functions.map(def => `    ${def.name}(${def.parameters.map(param => `${param.name}: ${tsTypeForPrimitiveType(param.type)}`).join(", ")}): ${tsTypeForPrimitiveType(def.returnType)} {\n\n}`).join(",\n") +
-                `} satisfies ${typeName};`
+                `import {${interfaceName}} from "./${baseFilename}.declaration";` +
+                `export default class ${implName} implements ${interfaceName} {` +
+                functions.map(def => `    ${def.name}(${def.parameters.map(param => `${param.name}: ${tsTypeForPrimitiveType(param.type)}`).join(", ")}): ${tsTypeForPrimitiveType(def.returnType)} {\n\n}`).join("\n") +
+                `}`
             ,
             overwrite: false,
             runPrettier: true
@@ -162,57 +161,42 @@ async function updateModule(
     }
 
     ensureFile({
-        filename: `${moduleName}.server.ts`,
+        filename: `server.ts`,
         contents: trimMargin(
             // language=TypeScript
             `
-            export default {
-              initGpioPin(pinNum: number): boolean {},
-              releaseGpioPin(pinNum: number): boolean {},
-              setGpioPinValue(pinNum: number): boolean {},
-            } satisfies ${titleCase(moduleName) + "Impl"};
+            import {ServerModuleImpl} from "../../../module-tool/ServerModuleImpl";
+
+            export default class ${titleCase(moduleName) + "Impl"} implements ServerModuleImpl {
+                init() {}
+                tick() {}
+                destroy() {}
+            };
             `),
         overwrite: false,
         runPrettier: true
     });
     ensureFile({
-        filename: `${moduleName}.client.ts`,
+        filename: `ui.web.ts`,
         contents: ``,
         overwrite: false,
         runPrettier: true
     });
 
-    ensureCFiles(`${moduleName}.interop`, moduleDef.interopFunctions);
+    ensureCFiles(`interop`, moduleDef.interopFunctions);
 
     moduleDef.platforms.forEach(platform => {
         const platformInfo = Platforms[platform];
         switch (platformInfo.language) {
             case "cpp": {
-                ensureCFiles(`${moduleName}.native.${platform}`, moduleDef.nativeFunctions);
+                ensureCFiles(`native.${platform}`, moduleDef.nativeFunctions);
             }
                 return;
 
             case "javascript": {
-                ensureTsFiles(`${moduleName}.native.${platform}`, moduleDef.nativeFunctions);
+                ensureTsFiles(`native.${platform}`, moduleDef.nativeFunctions);
             }
                 return;
-        }
-    })
-}
-
-function renameFilePrefixesInDirRecursively(
-    dir: string,
-    oldPrefix: string,
-    newPrefix: string,
-) {
-    fs.readdirSync(dir).forEach(filename => {
-        const filePath = path.join(dir, filename);
-        if (fs.statSync(filePath).isDirectory()) {
-            renameFilePrefixesInDirRecursively(filePath, oldPrefix, newPrefix);
-        } else {
-            if (filename.startsWith(oldPrefix)) {
-                fs.renameSync(filePath, path.join(dir, filename.replace(oldPrefix, newPrefix)));
-            }
         }
     })
 }
