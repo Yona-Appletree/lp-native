@@ -1,11 +1,10 @@
-# entities
+# Categories
 
-This library was generated with [Nx](https://nx.dev).
 
-## Building
+# `XxxDef`
 
-Run `nx build entities` to build the library.
+A definition of something, not JSON-serializable, as it probably contains
+zod schemas, and is likely built through function calls.
 
-## Running unit tests
+Does not include code.
 
-Run `nx test entities` to execute the unit tests via [Vitest](https://vitest.dev/).

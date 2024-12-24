@@ -10,13 +10,14 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2020", "dom"],
+    "lib": ["es2023", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
       "@lp-native/entities": ["libs/shared/entities/src/index.ts"]
-    }
+    },
+    "jsx": "react"
   },
   "exclude": ["node_modules", "tmp"]
 }
