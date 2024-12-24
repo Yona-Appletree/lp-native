@@ -1,8 +1,8 @@
-import { EntityKindKey } from '../../data/entity-kind-key';
+import { EntityRoleKey } from '../../data/entity-role-key';
 import { ConfigFieldDef } from './config-field-def';
 import { EntityQuery, EntitySelector } from '../../data/entity-query';
 
-export function entityQueryField<TKind extends EntityKindKey>({
+export function entityQueryField<TKind extends EntityRoleKey>({
   label,
   description,
   kind,

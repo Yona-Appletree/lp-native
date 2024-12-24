@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { EntityKindKey } from '../data/entity-kind-key';
+import { EntityRoleKey } from '../data/entity-role-key';
 
 /**
  * Uuid for an entity instance
@@ -10,13 +10,13 @@ export const EntityInstanceUuid = z.string().brand('EntityInstanceUuid');
  * Stored configuration for an entity.
  */
 export interface EntityConfig {
-  kind: string;
+  role: string;
   uuid: string;
   config: Record<string, unknown>;
   children: EntityConfig[];
 }
 export const EntityConfig: z.ZodType<EntityConfig> = z.object({
-  kind: EntityKindKey,
+  role: EntityRoleKey,
   uuid: EntityInstanceUuid,
   config: z.record(z.unknown()),
   children: z.array(z.lazy(() => EntityConfig)),

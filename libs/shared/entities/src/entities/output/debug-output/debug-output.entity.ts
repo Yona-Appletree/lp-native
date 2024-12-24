@@ -1,7 +1,7 @@
 import {
   ConfigForEntity,
-  EntityMetadata,
-} from '../../../core/metadata/entity-metadata';
+  EntityRoleDef,
+} from '../../../core/entity-role/entity-role-def';
 
 export const DebugOutputEntity = {
   key: 'debug-output',
@@ -13,7 +13,7 @@ export const DebugOutputEntity = {
       default: 100,
     },
   },
-} satisfies EntityMetadata;
+} satisfies EntityRoleDef;
 
 export type DebugOutputConfig = ConfigForEntity<typeof DebugOutputEntity>;
 

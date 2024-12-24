@@ -1,7 +1,7 @@
 import { EntityAgent } from './entity-agent';
-import { ConfigForEntity, EntityMetadata } from '../metadata/entity-metadata';
+import { ConfigForEntity, EntityRoleDef } from '../entity-role/entity-role-def';
 
-export function entityBackend<TDef extends EntityMetadata>(
+export function entityBackend<TDef extends EntityRoleDef>(
   definition: TDef,
   factory: EntityBackendDef<TDef>['factory']
 ): EntityBackendDef<TDef> {
@@ -11,7 +11,7 @@ export function entityBackend<TDef extends EntityMetadata>(
   };
 }
 
-export interface EntityBackendDef<TDef extends EntityMetadata> {
+export interface EntityBackendDef<TDef extends EntityRoleDef> {
   definition: TDef;
   factory: (params: {
     config: ConfigForEntity<TDef>;

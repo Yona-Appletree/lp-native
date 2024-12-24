@@ -1,21 +1,21 @@
 import { EntityInstanceUuid } from '../config/entity-config';
 import { z } from 'zod';
-import { EntityKindKey } from './entity-kind-key';
+import { EntityRoleKey } from './entity-role-key';
 
 /**
- * A query for zero or more entities of a certain kind.
+ * A query for zero or more entities of a certain role.
  */
-export function EntityQuery<TKind extends EntityKindKey>(kind: TKind) {
+export function EntityQuery<TRole extends EntityRoleKey>(role: TRole) {
   return z.object({
-    kind: z.literal(kind),
+    role: z.literal(role),
     select: EntitySelector,
 
     // todo: fix this unsafe cast
-  }) as z.ZodType<EntityQuery<TKind>>;
+  }) as z.ZodType<EntityQuery<TRole>>;
 }
 
-export type EntityQuery<TKind extends EntityKindKey> = {
-  kind: TKind;
+export type EntityQuery<TRole extends EntityRoleKey> = {
+  role: TRole;
   select: EntitySelector;
 };
 
