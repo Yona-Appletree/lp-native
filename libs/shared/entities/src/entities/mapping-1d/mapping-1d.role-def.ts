@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { Vector1d } from '../../core/data/vector-1d';
-import { zUint32Array } from '../../core/data/z-int32-array';
+import { Vector1d } from '../../core/value-shape/shapes/old/vector-1d';
+import { zUint32Array } from '../../core/value-shape/shapes/old/z-int32-array';
 
 export const Mapping1dRoleDef = {
   key: 'mapping-1d',
@@ -9,7 +9,7 @@ export const Mapping1dRoleDef = {
 
   outputs: {
     mapping1d: {
-      label: '1D mapping data',
+      label: '1D mapping value',
       type: z.object({
         size: Vector1d,
         indexes: zUint32Array,

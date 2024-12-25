@@ -1,4 +1,4 @@
-import { TypedUid } from '../uids/typed-uid';
+import { TypedUid } from '../uid/typed-uid';
 import { z } from 'zod';
 
 /**

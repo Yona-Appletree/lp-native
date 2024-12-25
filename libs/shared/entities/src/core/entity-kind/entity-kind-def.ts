@@ -1,6 +1,6 @@
 import { EntityInputDef } from '../input/fields/entity-input-def';
 import { EntityRoleKey } from '../entity-role/entity-role-key';
-import { TypedUid } from '../uids/typed-uid';
+import { TypedUid } from '../uid/typed-uid';
 
 export interface EntityKindDef {
   key: EntityRoleKey;

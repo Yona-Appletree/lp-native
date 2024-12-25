@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { EntityRoleKey } from '../entity-role/entity-role-key';
+import { EntityRoleKey } from '../../../entity-role/entity-role-key';
 
 /**
  * A query for zero or more entities of a certain role.

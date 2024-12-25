@@ -5,7 +5,7 @@
     "strict": true,
     "noImplicitAny": true
   },
-  // output to data/client.js
+  // output to value/client.js
   "outFile": "../../data/js/server.js",
   "include": [
     "**/*",

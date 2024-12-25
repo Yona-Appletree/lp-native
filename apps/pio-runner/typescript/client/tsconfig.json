@@ -9,7 +9,7 @@
       "DOM"
     ],
   },
-  // output to data/client.js
+  // output to value/client.js
   "outFile": "../../data/js/client.js",
   "include": [
     "**/*",

@@ -5,53 +5,68 @@ import { spawnSync } from 'child_process';
 import * as path from 'path';
 
 const EXPORT_NAME = 'lp_pure';
-const BUILD_DIR = 'data/js';
+const BUILD_DIR = 'value/js';
 const PUBLIC_API_HEADER = 'src/modules/pure/pure.h';
 const PUBLIC_API_DIR = path.dirname(PUBLIC_API_HEADER);
 
 if (!fs.existsSync(PUBLIC_API_HEADER)) {
-    console.error(`ERROR: ${PUBLIC_API_HEADER} does not exist`);
-    process.exit(1);
+  console.error(`ERROR: ${PUBLIC_API_HEADER} does not exist`);
+  process.exit(1);
 }
 
 console.log(`Building ${EXPORT_NAME}.js...`);
 
-const EXPORTED_FUNCTIONS = fs.readFileSync(PUBLIC_API_HEADER, 'utf8')
-    .split('\n')
-    .map(it => it.match(/(lp_[\w_]+)/)?.[1])
-    .filter(it => !! it)
-    .map(it => '_' + it)
+const EXPORTED_FUNCTIONS = fs
+  .readFileSync(PUBLIC_API_HEADER, 'utf8')
+  .split('\n')
+  .map((it) => it.match(/(lp_[\w_]+)/)?.[1])
+  .filter((it) => !!it)
+  .map((it) => '_' + it);
 
 console.log(`FUNCTIONS: ${EXPORTED_FUNCTIONS}`);
 
-const files = spawnSync('find', [ PUBLIC_API_DIR, '-iname', '*.c*' ]).stdout.toString()
-    .split('\n')
-    .filter(it => it?.trim())
-    .filter(it => !! it)
+const files = spawnSync('find', [PUBLIC_API_DIR, '-iname', '*.c*'])
+  .stdout.toString()
+  .split('\n')
+  .filter((it) => it?.trim())
+  .filter((it) => !!it);
 
 console.info(`FILES: ${files}`);
 
 const emccArgs = [
-    '-O3',
-    '--closure', '1',
-    '-s', 'WASM=1',
-    '-s', 'EXPORTED_RUNTIME_METHODS=ccall,cwrap',
-    '-s', 'ALLOW_MEMORY_GROWTH=1',
-    '-s', 'MODULARIZE=1',
-    '-s', `EXPORT_NAME=${EXPORT_NAME}`,
-    '-s', `EXPORTED_FUNCTIONS=[${EXPORTED_FUNCTIONS}]`,
-    '-s', 'ENVIRONMENT=web',
-    '-o', `${BUILD_DIR}/${EXPORT_NAME}.js`,
-    '-s', 'SINGLE_FILE',
-    '-x', 'c++',
-    ... files
+  '-O3',
+  '--closure',
+  '1',
+  '-s',
+  'WASM=1',
+  '-s',
+  'EXPORTED_RUNTIME_METHODS=ccall,cwrap',
+  '-s',
+  'ALLOW_MEMORY_GROWTH=1',
+  '-s',
+  'MODULARIZE=1',
+  '-s',
+  `EXPORT_NAME=${EXPORT_NAME}`,
+  '-s',
+  `EXPORTED_FUNCTIONS=[${EXPORTED_FUNCTIONS}]`,
+  '-s',
+  'ENVIRONMENT=web',
+  '-o',
+  `${BUILD_DIR}/${EXPORT_NAME}.js`,
+  '-s',
+  'SINGLE_FILE',
+  '-x',
+  'c++',
+  ...files,
 ];
 
 console.info(`em++ ${emccArgs.join(' ')}`);
 
 spawnSync('em++', emccArgs, { stdio: 'inherit' });
 
-fs.writeFileSync(`${BUILD_DIR}/${EXPORT_NAME}.d.ts`, `
+fs.writeFileSync(
+  `${BUILD_DIR}/${EXPORT_NAME}.d.ts`,
+  `
 import '@types/emscripten';
 
 export interface EmscriptenModule_${EXPORT_NAME} extends EmscriptenModule {
@@ -62,7 +77,8 @@ export interface EmscriptenModule_${EXPORT_NAME} extends EmscriptenModule {
 declare const moduleFactory: EmscriptenModuleFactory<EmscriptenModule_${EXPORT_NAME}>;
 
 export default moduleFactory;
-`.trim());
+`.trim()
+);
 
 /*
 #!/bin/bash
@@ -75,7 +91,7 @@ EXPORT_NAME=lp_pure
 # Functions starting with this will be exported
 PUBLIC_API_NAME=lp
 
-BUILD_DIR="data/js"
+BUILD_DIR="value/js"
 
 PUBLIC_API_HEADER="src/modules/pure/pure.h"
 PUBLIC_API_DIR=$(dirname "$PUBLIC_API_HEADER")

@@ -1,6 +1,9 @@
 import { EntityRoleKey } from '../../entity-role/entity-role-key';
 import { EntityInputDef } from './entity-input-def';
-import { EntityQuery, EntitySelector } from '../../data/entity-query';
+import {
+  EntityQuery,
+  EntitySelector,
+} from '../../value-shape/shapes/old/entity-query';
 
 export function entityQueryField<TKind extends EntityRoleKey>({
   label,
