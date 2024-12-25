@@ -1,7 +1,7 @@
 import {
   ConfigForEntity,
-  EntityRoleDef,
-} from '../../../core/entity-role/entity-role-def';
+  EntityKindDef,
+} from '../../../core/entity-kind/entity-kind-def';
 
 export const DebugOutputEntity = {
   key: 'debug-output',
@@ -13,7 +13,7 @@ export const DebugOutputEntity = {
       default: 100,
     },
   },
-} satisfies EntityRoleDef;
+} satisfies EntityKindDef;
 
 export type DebugOutputConfig = ConfigForEntity<typeof DebugOutputEntity>;
 

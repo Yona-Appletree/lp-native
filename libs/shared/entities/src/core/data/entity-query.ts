@@ -1,6 +1,5 @@
-import { EntityInstanceUuid } from '../config/entity-config';
 import { z } from 'zod';
-import { EntityRoleKey } from './entity-role-key';
+import { EntityRoleKey } from '../entity-role/entity-role-key';
 
 /**
  * A query for zero or more entities of a certain role.
@@ -26,6 +25,6 @@ export const EntitySelector = z.discriminatedUnion('$include', [
   }),
   z.object({
     $include: z.literal('uuids'),
-    uuids: z.array(EntityInstanceUuid),
+    uuids: z.array(z.string()),
   }),
 ]);

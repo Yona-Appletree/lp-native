@@ -1,7 +1,7 @@
-import { ConfigForEntity, EntityRoleDef } from '../entity-role/entity-role-def';
+import { ConfigForEntity, EntityKindDef } from '../entity-kind/entity-kind-def';
 import { EntityAgent } from '../backend/entity-agent';
 
-export function entityFrontend<TDef extends EntityRoleDef>(
+export function entityFrontend<TDef extends EntityKindDef>(
   definition: TDef,
   factory: EntityFrontendDef<TDef>['factory']
 ): EntityFrontendDef<TDef> {
@@ -11,7 +11,7 @@ export function entityFrontend<TDef extends EntityRoleDef>(
   };
 }
 
-export interface EntityFrontendDef<TDef extends EntityRoleDef> {
+export interface EntityFrontendDef<TDef extends EntityKindDef> {
   definition: TDef;
   factory: (params: {
     config: ConfigForEntity<TDef>;

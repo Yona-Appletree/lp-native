@@ -10,7 +10,7 @@ export default {
     mappings: entityQueryField({
       label: 'Mappings',
       description: 'The fixture mappings to include in the layout.',
-      kind: 'mapping',
+      role: 'mapping',
     }),
 
     ordering: {

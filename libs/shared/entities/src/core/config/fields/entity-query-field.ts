@@ -1,24 +1,24 @@
-import { EntityRoleKey } from '../../data/entity-role-key';
+import { EntityRoleKey } from '../../entity-role/entity-role-key';
 import { ConfigFieldDef } from './config-field-def';
 import { EntityQuery, EntitySelector } from '../../data/entity-query';
 
 export function entityQueryField<TKind extends EntityRoleKey>({
   label,
   description,
-  kind,
+  role,
   defaultSelect = { $include: 'all' },
 }: {
   label: string;
   description: string;
-  kind: TKind;
+  role: TKind;
   defaultSelect?: EntitySelector;
 }): ConfigFieldDef<EntityQuery<TKind>> {
   return {
     label,
     description,
-    type: EntityQuery(kind),
+    type: EntityQuery(role),
     defaultValue: {
-      kind: kind,
+      role: role,
       select: defaultSelect,
     },
   };
