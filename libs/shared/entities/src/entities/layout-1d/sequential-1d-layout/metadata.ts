@@ -1,4 +1,4 @@
-import { entityQueryField } from '../../../core/config/fields/entity-query-field';
+import { entityQueryField } from '../../../core/input/fields/entity-query-field';
 import { z } from 'zod';
 
 export default {

@@ -1,4 +1,4 @@
-import { entityQueryField } from '../../../core/config/fields/entity-query-field';
+import { entityQueryField } from '../../../core/input/fields/entity-query-field';
 
 export default {
   key: 'strip-fixture',

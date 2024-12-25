@@ -1,10 +1,10 @@
 import { z } from 'zod';
 
-export function ConfigFieldDef<T>(field: ConfigFieldDef<T>) {
+export function EntityInputDef<T>(field: EntityInputDef<T>) {
   return field;
 }
 
-export type ConfigFieldDef<T = unknown> = {
+export type EntityInputDef<T = unknown> = {
   label: string;
   description: string;
   type: z.ZodType<T>;

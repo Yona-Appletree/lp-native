@@ -1,5 +1,5 @@
 import { EntityRoleKey } from '../../entity-role/entity-role-key';
-import { ConfigFieldDef } from './config-field-def';
+import { EntityInputDef } from './entity-input-def';
 import { EntityQuery, EntitySelector } from '../../data/entity-query';
 
 export function entityQueryField<TKind extends EntityRoleKey>({
@@ -12,7 +12,7 @@ export function entityQueryField<TKind extends EntityRoleKey>({
   description: string;
   role: TKind;
   defaultSelect?: EntitySelector;
-}): ConfigFieldDef<EntityQuery<TKind>> {
+}): EntityInputDef<EntityQuery<TKind>> {
   return {
     label,
     description,

@@ -1,4 +1,4 @@
-import { ConfigFieldDef } from '../config/fields/config-field-def';
+import { EntityInputDef } from '../input/fields/entity-input-def';
 import { EntityRoleKey } from '../entity-role/entity-role-key';
 import { TypedUid } from '../uids/typed-uid';
 
@@ -6,7 +6,7 @@ export interface EntityKindDef {
   key: EntityRoleKey;
   label: string;
   description: string;
-  config: Record<string, ConfigFieldDef>;
+  inputs: Record<string, EntityInputDef>;
   uidType: TypedUid;
 }
 

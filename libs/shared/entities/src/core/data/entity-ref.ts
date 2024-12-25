@@ -1,4 +1,4 @@
-import { EntityInstanceUuid } from '../config/entity-config';
+import { EntityInstanceUuid } from '../input/entity-config';
 import { z } from 'zod';
 import { EntityRoleKey } from '../entity-role/entity-role-key';
 
