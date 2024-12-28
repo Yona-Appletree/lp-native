@@ -10,5 +10,8 @@
   "devDependencies": {
     "@nx/storybook": "^20.3.0",
     "@storybook/client-api": "^7.6.17"
+  },
+  "dependencies": {
+    "@heroicons/react": "^2.2.0"
   }
 }

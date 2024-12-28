@@ -1,3 +1,5 @@
+import { ChevronRightIcon } from '@heroicons/react/16/solid';
+
 export function EntityPanel() {
   return (
     <div className={'border border-gray-500'}>
@@ -18,9 +20,17 @@ export function EntityPanel() {
 
       <div className={'px-1'}>
         <section>
-          <h2 className={'text-sm text-gray-500 border-b border-gray-500'}>
+          <input type="checkbox" className="sr-only" />
+          <label
+            className={
+              'text-sm text-gray-500 ' +
+              'border-b border-gray-500 ' +
+              'flex items-center'
+            }
+          >
+            <ChevronRightIcon className={'w-4 h-4'}></ChevronRightIcon>
             Input
-          </h2>
+          </label>
         </section>
       </div>
     </div>
