@@ -1,5 +1,5 @@
 import { EntityAgent } from './entity-agent';
-import { ConfigForEntity, EntityKindDef } from '../entity-kind/entity-kind-def';
+import { EntityKindDef, InputForEntity } from '../entity-kind/entity-kind-def';
 
 export function entityBackend<TDef extends EntityKindDef>(
   definition: TDef,
@@ -14,7 +14,7 @@ export function entityBackend<TDef extends EntityKindDef>(
 export interface EntityBackendDef<TDef extends EntityKindDef> {
   definition: TDef;
   factory: (params: {
-    config: ConfigForEntity<TDef>;
+    config: InputForEntity<TDef>;
     agent: EntityAgent;
   }) => Promise<{
     dispose: () => void | Promise<void>;

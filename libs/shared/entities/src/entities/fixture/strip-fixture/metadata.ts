@@ -1,14 +1,26 @@
-import { entityQueryField } from '../../../core/input/fields/entity-query-field';
+import { EntityKindDef } from '../../../core/entity-kind/entity-kind-def';
+import EntityRef from '../../../core/value-shape/shapes/entity-ref';
+import { int32Input } from '../../../core/input/helpers/int32-input';
+import { EntityKindUid } from '../../../core/entity-kind/entity-kind-uid';
+import { OutputRoleDef } from '../../output/output.role.def';
 
-export default {
-  key: 'strip-fixture',
+export default EntityKindDef({
+  role: 'output',
+  uid: EntityKindUid('core:strip-fixture'),
   label: 'LED Strip',
   description: 'An LED strip or similar 1-dimensional array of lights',
-  config: {
-    mappings: entityQueryField({
-      label: 'Mappings',
-      description: 'The fixture mappings to include in the layout.',
-      kind: 'mapping',
+  inputs: {
+    length: int32Input({
+      label: 'Length',
+      description: 'The number of lights in the strip',
+      defaultValue: 64,
     }),
+    // todo: add color order
+    output: {
+      label: 'Output',
+      description: 'The output to which the strip is connected',
+      shape: EntityRef(OutputRoleDef),
+      defaultValue: '',
+    },
   },
-};
+});

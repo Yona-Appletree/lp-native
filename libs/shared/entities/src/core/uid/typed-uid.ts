@@ -25,10 +25,14 @@ export function TypedUid<TBrand extends string>(brand: TBrand) {
     )
     .brand(brand);
 
-  return Object.assign(() => generateUid(brand), { schema } as const);
+  return Object.assign(
+    (value: string = generateRandomUidValue()) =>
+      schema.parse(brand + ':' + value),
+    { schema } as const
+  );
 }
 
-export function generateUid<TBrand extends string>(brand: TBrand) {
+export function generateRandomUidValue() {
   const now = Date.now();
   const randomPart = Math.floor(Math.random() * 2 ** 32);
 
@@ -42,6 +46,5 @@ export function generateUid<TBrand extends string>(brand: TBrand) {
   // encode the 32 bits of random
   view.setUint32(8, randomPart);
 
-  const zz = encodeBaseN(array, '0123456789abcdefghijklmnopqrstuvwxyz');
-  return brand + ':' + zz;
+  return encodeBaseN(array, '0123456789abcdefghijklmnopqrstuvwxyz');
 }

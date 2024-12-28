@@ -1,5 +1,5 @@
 import { EntityRoleKey } from './entity-role-key';
-import { z } from 'zod';
+import { ValueShape } from '../value-shape/value-shape-def';
 
 /**
  * Definition of an entity role, or a "class" of entities.
@@ -30,7 +30,7 @@ export function EntityRoleDef(role: EntityRoleDef) {
 export interface OutputDef<T = unknown> {
   label: string;
   description: string;
-  type: z.ZodType<T>;
+  shape: ValueShape<T>;
 }
 
 /**
@@ -45,6 +45,6 @@ export interface MessageDef<TIn = unknown, TOut = unknown> {
   label: string;
   description: string;
 
-  inputType: z.ZodType<TIn>;
-  outputType: z.ZodType<TOut>;
+  inputType: ValueShape<TIn>;
+  outputType: ValueShape<TOut>;
 }

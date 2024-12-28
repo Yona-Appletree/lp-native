@@ -1,21 +1,20 @@
-import { z } from 'zod';
-import { Vector1d } from '../../core/value-shape/shapes/old/vector-1d';
-import { zUint32Array } from '../../core/value-shape/shapes/old/z-int32-array';
+import { EntityRoleDef } from '../../core/entity-role/entity-role-def';
+import ListShape from '../../core/value-shape/shapes/list.shape';
+import Bitmask1dShape from '../../core/value-shape/shapes/bitmask-1d.shape';
 
-export const Mapping1dRoleDef = {
+export const Mapping1dRoleDef = EntityRoleDef({
   key: 'mapping-1d',
+  label: '1D Mapping',
   description:
-    'Defines how the channels of a fixture are mapped into an 1d discrete space.',
+    'Defines how the channels of a fixture are mapped into a 1d discrete space.',
 
   outputs: {
     mapping1d: {
       label: '1D mapping value',
-      type: z.object({
-        size: Vector1d,
-        indexes: zUint32Array,
-      }),
+      description: 'The value of the 1D mapping at the given index.',
+      shape: ListShape(Bitmask1dShape()),
     },
   },
 
-  messages: [],
-};
+  messages: {},
+});

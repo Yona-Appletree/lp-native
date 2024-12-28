@@ -8,7 +8,8 @@ export const EntityRoleKey = z.enum([
   'fixture',
   'group',
   'image',
-  'layout',
-  'mapping',
   'output',
+
+  'mapping-1d',
+  'layout-1d',
 ]);

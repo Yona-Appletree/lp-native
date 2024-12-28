@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { ValueShape } from '../value-shape/value-shape-def';
 
 export function EntityInputDef<T>(field: EntityInputDef<T>) {
   return field;
@@ -7,6 +7,6 @@ export function EntityInputDef<T>(field: EntityInputDef<T>) {
 export type EntityInputDef<T = unknown> = {
   label: string;
   description: string;
-  type: z.ZodType<T>;
+  shape: ValueShape<T>;
   defaultValue: T;
 };

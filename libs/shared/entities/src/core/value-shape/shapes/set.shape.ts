@@ -3,13 +3,13 @@ import { z } from 'zod';
 
 export default ParametricShapeDef(
   {
-    key: 'list',
-    label: 'List',
-    description: 'An ordered list of values, allowing duplicates.',
+    key: 'set',
+    label: 'Set',
+    description: 'An ordered list of values, without duplicates.',
   },
   (itemShape: ValueShape) => ({
-    key: 'list',
-    label: `List of ${itemShape.label}`,
+    key: 'set',
+    label: `Set of ${itemShape.label}`,
     params: { itemShape },
     schema: z.array(itemShape.schema),
   })

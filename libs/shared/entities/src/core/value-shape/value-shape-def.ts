@@ -16,9 +16,9 @@ export interface ValueShapeDef<
  * A value shape node in a value tree.
  */
 export interface ValueShape<
-  TShapeKey extends ValueShapeKey = ValueShapeKey,
+  TValue = unknown,
   TParams = unknown,
-  TValue = unknown
+  TShapeKey extends ValueShapeKey = ValueShapeKey
 > {
   key: TShapeKey;
   label: string;
@@ -54,7 +54,7 @@ export function ValueShapeDef<TShapeKey extends ValueShapeKey, TValue>(
  */
 export function ParametricShapeDef<
   TShapeKey extends ValueShapeKey,
-  TFactoryFn extends (...args: any[]) => ValueShape<TShapeKey>
+  TFactoryFn extends (...args: any[]) => ValueShape<unknown, unknown, TShapeKey>
 >(shape: ValueShapeDef<TShapeKey>, factoryFn: TFactoryFn) {
   return Object.assign(factoryFn, shape);
 }
@@ -65,10 +65,15 @@ export function ParametricShapeDef<
 export type ValueShapeKey = z.infer<typeof ValueShapeKey>;
 export const ValueShapeKey = z.enum([
   'int32',
-  'list',
   'scalar',
   'string',
   'vector-2d',
   'vector-3d',
   'entity-ref',
+
+  'bitmask-1d',
+
+  // Collections
+  'list',
+  'set',
 ]);

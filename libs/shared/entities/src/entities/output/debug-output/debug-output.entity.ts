@@ -1,6 +1,6 @@
 import {
-  ConfigForEntity,
   EntityKindDef,
+  InputForEntity,
 } from '../../../core/entity-kind/entity-kind-def';
 
 export const DebugOutputEntity = {
@@ -15,6 +15,6 @@ export const DebugOutputEntity = {
   },
 } satisfies EntityKindDef;
 
-export type DebugOutputConfig = ConfigForEntity<typeof DebugOutputEntity>;
+export type DebugOutputConfig = InputForEntity<typeof DebugOutputEntity>;
 
 export default DebugOutputEntity;

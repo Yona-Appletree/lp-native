@@ -1,23 +1,21 @@
-import { entityQueryField } from '../../../core/input/fields/entity-query-field';
-import { z } from 'zod';
+import { EntityKindDef } from '../../../core/entity-kind/entity-kind-def';
+import { EntityKindUid } from '../../../core/entity-kind/entity-kind-uid';
+import SetShape from '../../../core/value-shape/shapes/set.shape';
+import EntityRef from '../../../core/value-shape/shapes/entity-ref';
+import { Mapping1dRoleDef } from '../../mapping-1d/mapping-1d.role-def';
 
-export default {
-  key: 'sequential-1d-layout',
+export default EntityKindDef({
+  role: 'layout-1d',
+  uid: EntityKindUid('core:layout-1d:sequential'),
   label: 'Sequential 1D layout',
   description:
     'A 1D layout where the fixtures are placed sequentially, and not overlapping.',
-  config: {
-    mappings: entityQueryField({
+  inputs: {
+    mappings: {
       label: 'Mappings',
       description: 'The fixture mappings to include in the layout.',
-      role: 'mapping',
-    }),
-
-    ordering: {
-      label: 'Ordering',
-      description: 'The ordering of the fixtures',
-      type: z.array(z.string()),
+      shape: SetShape(EntityRef(Mapping1dRoleDef)),
       defaultValue: [],
     },
   },
-};
+});

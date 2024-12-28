@@ -1,15 +1,19 @@
-import { EntityInputDef } from '../input/fields/entity-input-def';
+import { EntityInputDef } from '../input/entity-input-def';
 import { EntityRoleKey } from '../entity-role/entity-role-key';
-import { TypedUid } from '../uid/typed-uid';
+import { EntityKindUid } from './entity-kind-uid';
 
 export interface EntityKindDef {
-  key: EntityRoleKey;
+  role: EntityRoleKey;
+  uid: EntityKindUid;
   label: string;
   description: string;
   inputs: Record<string, EntityInputDef>;
-  uidType: TypedUid;
 }
 
-export type ConfigForEntity<T extends EntityKindDef> = {
-  [K in keyof T['config']]: T['config'][K]['defaultValue'];
+export type InputForEntity<T extends EntityKindDef> = {
+  [K in keyof T['inputs']]: T['inputs'][K]['defaultValue'];
 };
+
+export function EntityKindDef(kind: EntityKindDef) {
+  return kind;
+}
