@@ -8,6 +8,7 @@
     "generate:stories": "npx nx g @nx/react:stories --project=lp-frontend --interactionTests"
   },
   "devDependencies": {
-    "@nx/storybook": "^20.3.0"
+    "@nx/storybook": "^20.3.0",
+    "@storybook/client-api": "^7.6.17"
   }
 }

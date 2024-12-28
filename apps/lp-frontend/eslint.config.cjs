@@ -13,7 +13,11 @@ module.exports = [
     languageOptions: {
       parser: tsParser,
       parserOptions: {
-        project: ['./tsconfig.app.json', './tsconfig.spec.json'],
+        project: [
+          './tsconfig.app.json',
+          './tsconfig.spec.json',
+          './tsconfig.storybook.json',
+        ],
       },
     },
     rules: {
