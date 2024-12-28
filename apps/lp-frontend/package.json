@@ -4,6 +4,8 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "storybook": "storybook dev",
+    "generate:stories": "npx nx g @nx/react:stories --project=lp-frontend --interactionTests"
   },
   "devDependencies": {
     "@nx/storybook": "^20.3.0"
