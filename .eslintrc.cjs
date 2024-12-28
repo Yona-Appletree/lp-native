@@ -3,13 +3,22 @@ const eslintPluginUnusedImports = require('eslint-plugin-unused-imports');
 /* eslint-env node */
 module.exports = [
   {
-    plugins: [eslintPluginUnusedImports],
+    plugins: {
+      'unused-imports': eslintPluginUnusedImports,
+    },
+    rules: {
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
+      'unused-imports/no-unused-imports': 'error',
+      'unused-imports/no-unused-vars': [
+        'warn',
+        {
+          vars: 'all',
+          varsIgnorePattern: '^_',
+          args: 'after-used',
+          argsIgnorePattern: '^_',
+        },
+      ],
+    },
   },
 ];
-
-// {
-// extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
-//   parser: '@typescript-eslint/parser',
-//   plugins: ['@typescript-eslint'],
-//   root: true,
-// };
