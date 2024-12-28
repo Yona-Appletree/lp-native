@@ -1,3 +1,24 @@
-const baseConfig = require('../../eslint.config.cjs');
+const baseConfig = require('../../eslint.config.base.cjs');
 
-module.exports = [...baseConfig];
+const tsParser = require('@typescript-eslint/parser');
+const tseslint = require('typescript-eslint');
+
+module.exports = [
+  ...baseConfig,
+  {
+    ignores: ['**/*.cjs'],
+  },
+  {
+    files: ['**/*.ts', '**/*.tsx'],
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        project: ['./tsconfig.app.json', './tsconfig.spec.json'],
+      },
+    },
+    rules: {
+      //'@typescript-eslint/explicit-module-boundary-types': ['error'],
+    },
+  },
+  ...tseslint.configs.recommendedTypeChecked,
+];
