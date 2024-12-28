@@ -1,5 +1,5 @@
 import { EntityKindDef } from '../../../core/entity-kind/entity-kind-def';
-import EntityRef from '../../../core/value-shape/shapes/entity-ref';
+import EntityRef from '../../../core/value-shape/shapes/entity-ref.shape';
 import { int32Input } from '../../../core/input/helpers/int32-input';
 import { EntityKindUid } from '../../../core/entity-kind/entity-kind-uid';
 import { OutputRoleDef } from '../../output/output.role.def';

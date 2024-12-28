@@ -56,7 +56,12 @@ export function ParametricShapeDef<
   TShapeKey extends ValueShapeKey,
   TFactoryFn extends (...args: any[]) => ValueShape<unknown, unknown, TShapeKey>
 >(shape: ValueShapeDef<TShapeKey>, factoryFn: TFactoryFn) {
-  return Object.assign(factoryFn, shape);
+  return Object.assign(factoryFn, {
+    ...shape,
+    isInstance: (value: ValueShape): value is ReturnType<TFactoryFn> => {
+      return value.key === shape.key;
+    },
+  });
 }
 
 /**

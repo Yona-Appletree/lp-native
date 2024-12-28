@@ -1,7 +1,7 @@
 import { EntityKindDef } from '../../../core/entity-kind/entity-kind-def';
 import { EntityKindUid } from '../../../core/entity-kind/entity-kind-uid';
 import SetShape from '../../../core/value-shape/shapes/set.shape';
-import EntityRef from '../../../core/value-shape/shapes/entity-ref';
+import EntityRef from '../../../core/value-shape/shapes/entity-ref.shape';
 import { Mapping1dRoleDef } from '../../mapping-1d/mapping-1d.role-def';
 
 export default EntityKindDef({
