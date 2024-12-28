@@ -1,8 +1,8 @@
-import { ValueSourceDef } from '../value-source-def';
+import { ValueSpecifierDef } from '../value-specifier-def';
 import SetShape from '../../value-shape/shapes/set.shape';
 import EntityRefShape from '../../value-shape/shapes/entity-ref.shape';
 
-export default ValueSourceDef({
+export default ValueSpecifierDef({
   key: 'entity-query',
   label: 'Entity Query',
   description: 'Provides a set of entity references based on criteria.',

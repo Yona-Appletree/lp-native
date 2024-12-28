@@ -1,6 +1,6 @@
-import { ValueSourceDef } from '../value-source-def';
+import { ValueSpecifierDef } from '../value-specifier-def';
 
-export default ValueSourceDef({
+export default ValueSpecifierDef({
   key: 'literal',
   label: 'Literal Value',
   description: 'A literal value.',
