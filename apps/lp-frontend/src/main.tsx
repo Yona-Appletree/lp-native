@@ -14,3 +14,9 @@ root.render(
     </BrowserRouter>
   </StrictMode>
 );
+
+async function foo() {}
+
+function test() {
+  foo();
+}

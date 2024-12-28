@@ -1,7 +1,11 @@
 {
   "name": "@lp-native/lp-frontend",
   "version": "0.0.1",
-  "dependencies": {},
   "type": "module",
-  "private": true
+  "private": true,
+  "scripts": {
+  },
+  "devDependencies": {
+    "@nx/storybook": "^20.3.0"
+  }
 }

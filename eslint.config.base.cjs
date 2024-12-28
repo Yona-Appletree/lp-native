@@ -1,6 +1,7 @@
 const nxPlugin = require('@nx/eslint-plugin');
 const eslintPluginUnusedImports = require('eslint-plugin-unused-imports');
 const tseslint = require('typescript-eslint');
+const tsParser = require('@typescript-eslint/parser');
 
 /* eslint-env node */
 module.exports = [
