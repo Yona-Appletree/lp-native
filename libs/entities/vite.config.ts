@@ -7,7 +7,7 @@ import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
 
 export default defineConfig({
   root: __dirname,
-  cacheDir: '../../../node_modules/.vite/libs/shared/entities',
+  cacheDir: '../../node_modules/.vite/libs/shared/entities',
   plugins: [
     nxViteTsPaths(),
     nxCopyAssetsPlugin(['*.md']),
@@ -23,7 +23,7 @@ export default defineConfig({
   // Configuration for building your library.
   // See: https://vitejs.dev/guide/build.html#library-mode
   build: {
-    outDir: '../../../dist/libs/shared/entities',
+    outDir: '../../dist/libs/shared/entities',
     emptyOutDir: true,
     reportCompressedSize: true,
     commonjsOptions: {
@@ -50,7 +50,7 @@ export default defineConfig({
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     reporters: ['default'],
     coverage: {
-      reportsDirectory: '../../../coverage/libs/shared/entities',
+      reportsDirectory: '../../coverage/libs/shared/entities',
       provider: 'v8',
     },
   },

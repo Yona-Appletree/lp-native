@@ -23,10 +23,9 @@ Does not include frontend or backend-specific code.
 Most things that have a backend and a frontend should have a definition
 as well, and be in a directory together.
 
-## Entity Roles  
+## Entity Roles
 
 A role that an entity plays in the system: `output`, `mapping`, etc..
-
 
 ## Entity Kind
 

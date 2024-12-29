@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@lp-native/entities": ["libs/shared/entities/src/index.ts"]
+      "@lp-native/entities": ["libs/entities/src/index.ts"]
     },
     "jsx": "react"
   },
