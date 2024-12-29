@@ -2,9 +2,9 @@ import { EntityKindDef } from '../../../core/entity-kind/entity-kind-def';
 import EntityRef from '../../../core/value-shape/shapes/entity-ref.shape';
 import { int32Input } from '../../../core/input/helpers/int32-input';
 import { EntityKindUid } from '../../../core/entity-kind/entity-kind-uid';
-import { OutputRoleDef } from '../../output/output.role.def';
+import { OutputRole } from '../../output/output.role';
 
-export default EntityKindDef({
+export const StripFixture = EntityKindDef({
   role: 'output',
   uid: EntityKindUid('core:strip-fixture'),
   label: 'LED Strip',
@@ -19,7 +19,7 @@ export default EntityKindDef({
     output: {
       label: 'Output',
       description: 'The output to which the strip is connected',
-      shape: EntityRef(OutputRoleDef),
+      shape: EntityRef(OutputRole),
       defaultValue: '',
     },
   },

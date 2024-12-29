@@ -2,7 +2,7 @@ import { EntityRoleDef } from '../../core/entity-role/entity-role-def';
 import ListShape from '../../core/value-shape/shapes/list.shape';
 import Bitmask1dShape from '../../core/value-shape/shapes/bitmask-1d.shape';
 
-export const Mapping1dRoleDef = EntityRoleDef({
+export const Mapping1dRole = EntityRoleDef({
   key: 'mapping-1d',
   label: '1D Mapping',
   description:
