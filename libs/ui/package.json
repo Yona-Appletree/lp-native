@@ -4,6 +4,10 @@
   "type": "module",
   "main": "./index.js",
   "types": "./index.d.ts",
+  "scripts": {
+    "storybook": "storybook dev",
+    "generate:stories": "npx nx g @nx/react:stories --project=lp-frontend --interactionTests"
+  },
   "exports": {
     ".": {
       "import": "./index.mjs",
@@ -14,6 +18,8 @@
     "@storybook/client-api": "^7.6.17"
   },
   "dependencies": {
+    "@radix-ui/react-accordion": "^1.2.2",
+    "@radix-ui/react-slot": "^1.1.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.469.0",

@@ -3,8 +3,8 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/app/components/ui/accordion';
-import { Button } from '@/app/components/ui/button';
+} from '@lp-native/ui/components/accordion';
+import { Button } from '@lp-native/ui/components/button';
 import { CopyIcon, TrashIcon } from 'lucide-react';
 
 export function EntityPanel({

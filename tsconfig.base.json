@@ -15,8 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@lp-native/entities": ["libs/entities/src/index.ts"],
-      "@lp-native/ui": ["libs/ui/src"]
+      "@lp-native/entities": ["./libs/entities/src/index.ts"],
+      "@lp-native/ui/*": ["./libs/ui/src/*"],
     },
     "jsx": "react"
   },
