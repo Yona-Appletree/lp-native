@@ -1,5 +1,5 @@
 import '../src/styles.css';
-// .storybook/preview.tsx
+// .storybook/preview.ts
 import { StoryFn } from '@storybook/react';
 import * as React from 'react'; // or your Storybook framework
 
